@@ -8,7 +8,8 @@ Created on Wed Aug  9 11:14:40 2017
 # -*- coding: utf-8 -*-
 """
 Created on Mon Jul  3 15:45:35 2017
-
+you can use higher central difference method
+the default is 2nd central scheme by numpy.gradient
 @author: Xin
 """
 
