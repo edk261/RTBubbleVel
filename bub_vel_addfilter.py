@@ -28,6 +28,7 @@ h5file = h5py.File('tests_single_new.h5', 'r')
 #h5file = h5py.File('temp.h5', 'r+')
 #read dataset dimensions
 mylist = ['Fields/','Prho','/','002000']
+delimiter=''
 filepath = delimiter.join(mylist)
 databk = h5file.get(filepath)
 m1 = np.array(databk)
@@ -119,7 +120,7 @@ for istep in step:
     bub_velo_all_ori[ii] = bub_velo_ori
     ub_velo_all_aver=bub_velo_all.copy()
     #calculate avearge buble velocity
-    for jstep in range(10,585-11):
+#    for jstep in range(10,585-11):
         #bub_velo_all_aver[jstep]=(bub_velo_all[jstep-10]+bub_velo_all[jstep-9]+bub_velo_all[jstep-8]+bub_velo_all[jstep-7]+bub_velo_all[jstep-6]+bub_velo_all[jstep-5]+bub_velo_all[jstep-4]+bub_velo_all[jstep-3]+bub_velo_all[jstep-2]+bub_velo_all[jstep-1]+bub_velo_all[jstep]+bub_velo_all[jstep+1]+bub_velo_all[jstep+2]+bub_velo_all[jstep+3]+bub_velo_all[jstep+4]+bub_velo_all[jstep+5]+bub_velo_all[jstep+6]+bub_velo_all[jstep+7]+bub_velo_all[jstep+8]+bub_velo_all[jstep+9]+bub_velo_all[jstep+10])/21
 #        bub_velo_all_aver[jstep]=(bub_velo_all_ori[jstep-2]+bub_velo_all_ori[jstep-1]+bub_velo_all_ori[jstep]+bub_velo_all_ori[jstep+1]+bub_velo_all_ori[jstep+2])/5
 #    sp_velo_all[ii] = sp_velo
