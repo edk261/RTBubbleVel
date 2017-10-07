@@ -123,7 +123,7 @@ for istep in step:
 #    for jstep in range(10,585-11):
         #bub_velo_all_aver[jstep]=(bub_velo_all[jstep-10]+bub_velo_all[jstep-9]+bub_velo_all[jstep-8]+bub_velo_all[jstep-7]+bub_velo_all[jstep-6]+bub_velo_all[jstep-5]+bub_velo_all[jstep-4]+bub_velo_all[jstep-3]+bub_velo_all[jstep-2]+bub_velo_all[jstep-1]+bub_velo_all[jstep]+bub_velo_all[jstep+1]+bub_velo_all[jstep+2]+bub_velo_all[jstep+3]+bub_velo_all[jstep+4]+bub_velo_all[jstep+5]+bub_velo_all[jstep+6]+bub_velo_all[jstep+7]+bub_velo_all[jstep+8]+bub_velo_all[jstep+9]+bub_velo_all[jstep+10])/21
 #        bub_velo_all_aver[jstep]=(bub_velo_all_ori[jstep-2]+bub_velo_all_ori[jstep-1]+bub_velo_all_ori[jstep]+bub_velo_all_ori[jstep+1]+bub_velo_all_ori[jstep+2])/5
-#    sp_velo_all[ii] = sp_velo
+    sp_velo_all[ii] = sp_velo
     ii = ii + 1
 
 all_data = np.column_stack((bub_loc_all,bub_velo_all,sp_loc_all,sp_velo_all))
