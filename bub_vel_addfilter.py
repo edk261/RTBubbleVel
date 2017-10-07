@@ -20,14 +20,21 @@ import numpy as np
 #import numdifftools as nd
 import pylab
 import matplotlib.pyplot as plt
-nx = 1
-ny = 512
-nz = 4096
-lz=3.2
 
+lz=3.2
 variables = ['Prho', 'PVz']
 h5file = h5py.File('tests_single_new.h5', 'r')
+
 #h5file = h5py.File('temp.h5', 'r+')
+#read dataset dimensions
+mylist = ['Fields/','Prho','/','002000']
+filepath = delimiter.join(mylist)
+databk = h5file.get(filepath)
+m1 = np.array(databk)
+nz=m1.shape[0]
+ny=m1.shape[1]
+nx=m1.shape[2]
+
 dx=lz/nz
 def high_order_gradient(fx,dx,order):
     length=len(fx)
@@ -114,8 +121,8 @@ for istep in step:
     #calculate avearge buble velocity
     for jstep in range(10,585-11):
         #bub_velo_all_aver[jstep]=(bub_velo_all[jstep-10]+bub_velo_all[jstep-9]+bub_velo_all[jstep-8]+bub_velo_all[jstep-7]+bub_velo_all[jstep-6]+bub_velo_all[jstep-5]+bub_velo_all[jstep-4]+bub_velo_all[jstep-3]+bub_velo_all[jstep-2]+bub_velo_all[jstep-1]+bub_velo_all[jstep]+bub_velo_all[jstep+1]+bub_velo_all[jstep+2]+bub_velo_all[jstep+3]+bub_velo_all[jstep+4]+bub_velo_all[jstep+5]+bub_velo_all[jstep+6]+bub_velo_all[jstep+7]+bub_velo_all[jstep+8]+bub_velo_all[jstep+9]+bub_velo_all[jstep+10])/21
-        bub_velo_all_aver[jstep]=(bub_velo_all_ori[jstep-2]+bub_velo_all_ori[jstep-1]+bub_velo_all_ori[jstep]+bub_velo_all_ori[jstep+1]+bub_velo_all_ori[jstep+2])/5
-    sp_velo_all[ii] = sp_velo
+#        bub_velo_all_aver[jstep]=(bub_velo_all_ori[jstep-2]+bub_velo_all_ori[jstep-1]+bub_velo_all_ori[jstep]+bub_velo_all_ori[jstep+1]+bub_velo_all_ori[jstep+2])/5
+#    sp_velo_all[ii] = sp_velo
     ii = ii + 1
 
 all_data = np.column_stack((bub_loc_all,bub_velo_all,sp_loc_all,sp_velo_all))
