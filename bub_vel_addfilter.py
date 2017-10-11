@@ -95,7 +95,7 @@ for istep in step:
 
     m1_grad = high_order_gradient(m1_filter,dx,6)
     m2_grad = high_order_gradient(m2_filter,dx,6)
-    m2_grad_ori = high_order_gradient(m2,dx,6)
+#    m2_grad_ori = high_order_gradient(m2,dx,6)
 
     sp_loc = np.argmax(m1_grad)
     bub_loc = np.argmax(m2_grad)
@@ -103,7 +103,7 @@ for istep in step:
   #  print 'at step ', ii, ' sp_loc is ',sp_loc, ' bub loc is ',bub_loc
     sp_loc_all[ii] = sp_loc
     bub_loc_all[ii] = bub_loc
-    bub_loc_all_ori[ii] = bub_loc_ori
+ #   bub_loc_all_ori[ii] = bub_loc_ori
 
 
     mylist = ['Fields/', variables[1], '/', istep]
@@ -114,11 +114,11 @@ for istep in step:
     m2 = np_data[:, 0, 0]
     sp_velo = m1[sp_loc]
     bub_velo = m2[bub_loc]
-    bub_velo_ori=m2[bub_loc_ori]
+ #   bub_velo_ori=m2[bub_loc_ori]
   #  print 'at step ', ii, ' sp velo is ',sp_velo ,' bub velo is ',bub_velo
     bub_velo_all[ii] = bub_velo
-    bub_velo_all_ori[ii] = bub_velo_ori
-    ub_velo_all_aver=bub_velo_all.copy()
+ #   bub_velo_all_ori[ii] = bub_velo_ori
+ #   bub_velo_all_aver=bub_velo_all.copy()
     #calculate avearge buble velocity
 #    for jstep in range(10,585-11):
         #bub_velo_all_aver[jstep]=(bub_velo_all[jstep-10]+bub_velo_all[jstep-9]+bub_velo_all[jstep-8]+bub_velo_all[jstep-7]+bub_velo_all[jstep-6]+bub_velo_all[jstep-5]+bub_velo_all[jstep-4]+bub_velo_all[jstep-3]+bub_velo_all[jstep-2]+bub_velo_all[jstep-1]+bub_velo_all[jstep]+bub_velo_all[jstep+1]+bub_velo_all[jstep+2]+bub_velo_all[jstep+3]+bub_velo_all[jstep+4]+bub_velo_all[jstep+5]+bub_velo_all[jstep+6]+bub_velo_all[jstep+7]+bub_velo_all[jstep+8]+bub_velo_all[jstep+9]+bub_velo_all[jstep+10])/21
