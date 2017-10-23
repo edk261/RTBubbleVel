@@ -82,7 +82,7 @@ for istep in step:
     filepath = delimiter.join(mylist)
     databk = h5file.get(filepath)
     np_data = np.array(databk)
-    m1 = np_data[:, ny/2-1, 0]
+    m1 = (np_data[:, ny/2-1, 0] + np_data[:, ny/2, 0] )/2
     m2 = np_data[:, 0, 0]
     m1_filter=m1.copy();    
     m2_filter=m2.copy();    
@@ -99,7 +99,7 @@ for istep in step:
 
     sp_loc = np.argmax(m1_grad)
     bub_loc = np.argmax(m2_grad)
-    bub_loc_ori = np.argmax(m2_grad_ori)
+  #  bub_loc_ori = np.argmax(m2_grad_ori)
   #  print 'at step ', ii, ' sp_loc is ',sp_loc, ' bub loc is ',bub_loc
     sp_loc_all[ii] = sp_loc
     bub_loc_all[ii] = bub_loc
@@ -110,7 +110,7 @@ for istep in step:
     filepath = delimiter.join(mylist)
     databk = h5file.get(filepath)
     np_data = np.array(databk)
-    m1 = np_data[:, ny/2-1, 0]
+    m1 = (np_data[:, ny/2-1, 0] + np_data[:, ny/2, 0])/2
     m2 = np_data[:, 0, 0]
     sp_velo = m1[sp_loc]
     bub_velo = m2[bub_loc]
