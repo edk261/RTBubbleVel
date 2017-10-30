@@ -21,7 +21,7 @@ import numpy as np
 import pylab
 import matplotlib.pyplot as plt
 
-lz=3.2
+lz=1.6
 specout = 2000
 variables = ['Prho', 'PVz']
 h5file = h5py.File('tests_single_new.h5', 'r')
@@ -63,7 +63,7 @@ def high_order_gradient(fx,dx,order):
     return fxgrad
 
 step = []
-for i in range(721):
+for i in range(53):
     step.append(str((i+1)*specout).zfill(6))
 
 
@@ -86,7 +86,8 @@ for istep in step:
     if nx == 1:
 	    m1 = (np_data[:, ny/2-1, 0] + np_data[:, ny/2, 0] )/2
     else:
-	    m1 = (np_data[:, ny/2-1, nx/2-1] + np_data[:, ny/2, nx/2] )/2
+	    m1 = (np_data[:, ny/2-1, nx/2-1] + np_data[:, ny/2, nx/2] 
+	  + np_data[:, ny/2-1, nx/2] + np_data[:, ny/2, nx/2-1])/4.0
     m2 = np_data[:, 0, 0]
     m1_filter=m1.copy();    
     m2_filter=m2.copy();    
@@ -114,7 +115,13 @@ for istep in step:
     filepath = delimiter.join(mylist)
     databk = h5file.get(filepath)
     np_data = np.array(databk)
-    m1 = (np_data[:, ny/2-1, 0] + np_data[:, ny/2, 0])/2
+  
+#consider 3d case
+    if nx == 1:
+	    m1 = (np_data[:, ny/2-1, 0] + np_data[:, ny/2, 0] )/2
+    else:
+	    m1 = (np_data[:, ny/2-1, nx/2-1] + np_data[:, ny/2, nx/2] 
+	  + np_data[:, ny/2-1, nx/2] + np_data[:, ny/2, nx/2-1])/4.0
     m2 = np_data[:, 0, 0]
     sp_velo = m1[sp_loc]
     bub_velo = m2[bub_loc]
